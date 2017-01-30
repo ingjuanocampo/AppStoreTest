@@ -1,7 +1,10 @@
 package com.juanocampo.test.appstoretest.ui.adapters;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +26,9 @@ import java.util.List;
 public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardViewHolder> {
 
 
+
     public interface CardAdapterActions {
-        void onCardClicked(Entry entry);
+        void onCardClicked(Entry entry, View view);
     }
 
     private static final int ANIMATED_ITEMS_COUNT = 20;
@@ -50,6 +54,12 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardViewHold
     @Override
     public void onBindViewHolder(CardViewHolder holder, int position) {
         holder.setValues(entries.get(position));
+
+        String transitionName = context.getString(R.string.share_transition_name) + entries.get(position).getName().getLabel();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ViewCompat.setTransitionName(holder.sharedItem, transitionName);
+        }
     }
 
     @Override
@@ -59,21 +69,25 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardViewHold
 
 
 
+
+
     public class CardViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
         private TextView txtTitle;
-        private TextView txtCopyRights;
-        private LinearLayout cardView;
         private TextView price;
+        private TextView category;
+        private View sharedItem;
 
         public CardViewHolder(ViewGroup item) {
             super(LayoutInflater.from(item.getContext()).inflate(R.layout.card_view_item, item, false));
-            imageView = (ImageView) itemView.findViewById(R.id.image_card);
-            txtCopyRights = (TextView) itemView.findViewById(R.id.title_copy_right_card);
-            txtTitle = (TextView) itemView.findViewById(R.id.title_card);
-            cardView = (LinearLayout) itemView.findViewById(R.id.card);
-            price = (TextView) itemView.findViewById(R.id.price);
+            sharedItem = itemView.findViewById(R.id.share_item);
+
+             imageView = (ImageView) itemView.findViewById(R.id.app_image);
+            txtTitle = (TextView) itemView.findViewById(R.id.app_title);
+             price = (TextView)  itemView.findViewById(R.id.app_price);
+             category = (TextView) itemView.findViewById(R.id.app_category);
+
         }
 
         public void setValues(final Entry entry) {
@@ -82,14 +96,17 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.CardViewHold
                     placeholder(R.mipmap.ic_launcher)
                     .transform(AnimationsCommons.getCircleTransformation())
                     .into(imageView);
-            txtCopyRights.setText(entry.getRights().getLabel());
-            txtTitle.setText(entry.getName().getLabel());
-            price.setText("$" + entry.getPrice().getLabel());
 
-            cardView.setOnClickListener(new View.OnClickListener() {
+
+            txtTitle.setText(entry.getTitle().getLabel());
+
+            price.setText(entry.getPrice().getPriceAttributes().getCurrency() + " " + entry.getPrice().getPriceAttributes().getAmount());
+            category.setText(entry.getCategory().getAttributes().getLabel());
+
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    actions.onCardClicked(entry);
+                    actions.onCardClicked(entry, sharedItem);
                 }
             });
 

@@ -5,12 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.util.Pair;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,6 +95,7 @@ public class FragmentListsStores extends Fragment implements CardsAdapter.CardAd
         setLoader(true);
     }
 
+    private CardsAdapter adapter;
     Subscriber<ServiceResponse> serviceResponseSubscriber = new Subscriber<ServiceResponse>() {
         @Override
         public void onCompleted() {
@@ -105,7 +111,7 @@ public class FragmentListsStores extends Fragment implements CardsAdapter.CardAd
         @Override
         public void onNext(ServiceResponse serviceResponse) {
             setLoader(false);
-            CardsAdapter adapter = new CardsAdapter(getContext(), serviceResponse.getFeed().getEntries(), FragmentListsStores.this);
+            adapter = new CardsAdapter(getContext(), serviceResponse.getFeed().getEntries(), FragmentListsStores.this);
 
             recyclerView.setAdapter(adapter);
         }
@@ -126,8 +132,17 @@ public class FragmentListsStores extends Fragment implements CardsAdapter.CardAd
 
 
     @Override
-    public void onCardClicked(Entry entry) {
-        startActivityForResult(DetailActivity.newInstance(entry, getActivity()), 0);
+    public void onCardClicked(Entry entry, View sharedElement) {
+
+        Pair<View, String> pair3 = Pair.create(sharedElement, sharedElement.getTransitionName());
+
+
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(getActivity(), pair3);
+
+        setExitTransition(new Fade());
+
+        startActivity(DetailActivity.newInstance(entry, getActivity()), options.toBundle());
     }
 
     BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {

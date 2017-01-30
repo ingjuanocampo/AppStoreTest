@@ -1,12 +1,19 @@
 package com.juanocampo.test.appstoretest.ui.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
+import android.transition.Fade;
+import android.transition.Transition;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,17 +53,39 @@ public class DetailFragment extends Fragment {
 
         Entry entry = (Entry) getActivity().getIntent().getExtras().get(DetailActivity.ENTRY);
 
-
-        TextView titleApp = (TextView) getView().findViewById(R.id.detail_title);
-        TextView price = (TextView)  getView().findViewById(R.id.detail_price);
-        TextView category = (TextView) getView().findViewById(R.id.detail_category);
+        ImageView imageView = (ImageView) getView().findViewById(R.id.app_image);
+        TextView titleApp = (TextView) getView().findViewById(R.id.app_title);
+        TextView price = (TextView)  getView().findViewById(R.id.app_price);
+        TextView category = (TextView) getView().findViewById(R.id.app_category);
         TextView description = (TextView) getView().findViewById(R.id.detail_description);
         TextView company = (TextView) getView().findViewById(R.id.detail_company);
         TextView releaseDate = (TextView) getView().findViewById(R.id.detail_release_date);
         TextView copyRights = (TextView) getView().findViewById(R.id.detail_copy_rights);
-        ImageView imageView = (ImageView) getView().findViewById(R.id.detail_image);
+        final View container = getView().findViewById(R.id.container_extra_info);
 
-        //title.setText(entry.getName().getLabel());
+       View sharedElement = getView().findViewById(R.id.share_item);
+
+        final String transitionName = getString(R.string.share_transition_name) + entry.getName().getLabel();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ViewCompat.setTransitionName(sharedElement, transitionName);
+        }
+
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+
+                container.setVisibility(View.VISIBLE);
+                Animation translateIn = AnimationUtils.loadAnimation(getContext(), R.anim.up_in);
+
+                container.startAnimation(translateIn);
+
+            }
+        });
+
+
+
+
         titleApp.setText(entry.getTitle().getLabel());
         price.setText(entry.getPrice().getPriceAttributes().getCurrency() + " " + entry.getPrice().getPriceAttributes().getAmount());
         category.setText(entry.getCategory().getAttributes().getLabel());
