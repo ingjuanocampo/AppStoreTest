@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:foreground="?selectableItemBackground"
+        android:layout_marginLeft="@dimen/margin_normal"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/padding_normal"
+        android:paddingTop="@dimen/padding_normal">
+
+        <ImageView
+            android:id="@+id/image_card"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/card_image_dimen"
+            android:layout_weight="17"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="80"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_card"
+                style="@style/TextStyle.Big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                tools:text="Example Name" />
+
+            <TextView
+                android:id="@+id/title_copy_right_card"
+                style="@style/TextStyle.Small.Gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:drawablePadding="2dp"
+                android:gravity="center_vertical"
+                tools:text="Title Example" />
+
+            <TextView
+                android:id="@+id/price"
+                android:textStyle="italic"
+                style="@style/TextStyle.Small.Gray"
+                android:text="$ 4500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="@dimen/margin_normal"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+</LinearLayout>
