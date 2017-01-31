@@ -72,9 +72,5 @@ public class ItunesApiClientImp implements Itunes{
                 });
             }
         }).subscribe(responsesCalls);
-
-
-
-
     }
 }

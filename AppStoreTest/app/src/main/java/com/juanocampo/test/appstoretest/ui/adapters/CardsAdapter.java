@@ -36,14 +36,9 @@ public class CardsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         void onCategoryClicked(String categoryKey);
     }
 
-    private static final int ANIMATED_ITEMS_COUNT = 20;
-
     private final Context context;
     private final CardAdapterActions actions;
     private final List<ViewType> items;
-    private boolean animateItems = false;
-    private int lastAnimatedPosition = -1;
-    private int itemsCount = 0;
 
     public CardsAdapter(Context context, List<ViewType> items, CardAdapterActions adapterActions) {
         this.context = context;
