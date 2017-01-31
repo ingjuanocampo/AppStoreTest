@@ -5,7 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
- * Created by juanocampo on 6/19/16.
+ * Created by juanocampo
  */
 public class ProxyApp {
 

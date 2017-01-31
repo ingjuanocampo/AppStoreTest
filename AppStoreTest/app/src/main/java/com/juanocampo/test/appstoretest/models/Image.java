@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 /**
- * Created by juanocampo on 6/16/16.
+ * Created by juanocampo
  */
 public class Image implements Serializable {
 

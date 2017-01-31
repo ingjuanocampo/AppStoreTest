@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by juanocampo on 6/14/16.
+ * Created by juanocampo
  */
 public class Feed implements Serializable {
 

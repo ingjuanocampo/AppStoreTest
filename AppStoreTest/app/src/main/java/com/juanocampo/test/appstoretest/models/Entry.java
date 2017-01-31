@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by juanocampo on 6/16/16.
+ * Created by juanocampo
  */
 public class Entry implements Serializable, ViewType {
 

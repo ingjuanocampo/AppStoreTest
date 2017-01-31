@@ -27,7 +27,7 @@ import rx.observables.AsyncOnSubscribe;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by juanocampo on 6/19/16.
+ * Created by juanocampo
  */
 public class ItunesApiClientImp implements Itunes{
 

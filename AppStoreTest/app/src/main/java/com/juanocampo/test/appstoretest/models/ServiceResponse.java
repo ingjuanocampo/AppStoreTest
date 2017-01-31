@@ -1,7 +1,7 @@
 package com.juanocampo.test.appstoretest.models;
 
 /**
- * Created by juanocampo on 6/20/16.
+ * Created by juanocampo
  */
 public class ServiceResponse {
 
