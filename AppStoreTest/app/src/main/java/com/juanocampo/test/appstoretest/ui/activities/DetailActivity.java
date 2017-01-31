@@ -16,7 +16,7 @@ import com.juanocampo.test.appstoretest.ui.fragments.DetailFragment;
  * Created by juanocampo on 1/28/17.
  */
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends ActivityBase {
 
     public static final String ENTRY = "Entry";
 
@@ -39,18 +39,5 @@ public class DetailActivity extends AppCompatActivity {
 
         }
 
-    }
-
-    private void executeFragment(Fragment fragmentToExecute) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, fragmentToExecute)
-                .commit();
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        onBackPressed();
-        return super.onOptionsItemSelected(item);
     }
 }

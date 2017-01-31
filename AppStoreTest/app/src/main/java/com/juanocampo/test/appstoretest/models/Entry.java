@@ -2,6 +2,7 @@ package com.juanocampo.test.appstoretest.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.juanocampo.test.appstoretest.ui.adapters.ViewType;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,8 +10,10 @@ import java.util.List;
 /**
  * Created by juanocampo on 6/16/16.
  */
-public class Entry implements Serializable {
+public class Entry implements Serializable, ViewType {
 
+    public static final int ENTRY_VIEW_TYPE = 1;
+    public static final int CATEGORY_VIEW_TYPE = 2;
     @SerializedName("im:name")
     private final Label name;
     @SerializedName("im:image")
@@ -80,6 +83,11 @@ public class Entry implements Serializable {
         this.releaseDate = releaseDate;
     }
 
+    @Override
+    public int getViewType() {
+        return ENTRY_VIEW_TYPE;
+    }
+
     public class ReleaseDate implements Serializable {
         private final Label attributes;
 
@@ -92,7 +100,7 @@ public class Entry implements Serializable {
         }
     }
 
-    public class Category implements Serializable {
+    public class Category implements Serializable, ViewType {
         private final CategoryAttributes attributes;
 
         public Category(CategoryAttributes attributes) {
@@ -101,6 +109,11 @@ public class Entry implements Serializable {
 
         public CategoryAttributes getAttributes() {
             return attributes;
+        }
+
+        @Override
+        public int getViewType() {
+            return CATEGORY_VIEW_TYPE;
         }
     }
 

@@ -9,7 +9,7 @@
     tools:context="com.juanocampo.test.appstoretest.ui.activities.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <fragment android:name="com.juanocampo.test.appstoretest.ui.fragments.FragmentListsStores"
+    <fragment android:name="com.juanocampo.test.appstoretest.ui.fragments.FragmentHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_list" />

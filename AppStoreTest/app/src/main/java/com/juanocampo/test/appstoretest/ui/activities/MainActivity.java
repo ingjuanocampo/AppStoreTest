@@ -20,7 +20,7 @@ import com.juanocampo.test.appstoretest.util.AnimationsCommons;
 import com.juanocampo.test.appstoretest.util.SharePreferenceManager;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends ActivityBase
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override

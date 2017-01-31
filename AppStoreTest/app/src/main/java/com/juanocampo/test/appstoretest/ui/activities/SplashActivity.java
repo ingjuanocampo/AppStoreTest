@@ -11,9 +11,9 @@ import com.juanocampo.test.appstoretest.R;
  * Created by juanocampo on 1/30/17.
  */
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends ActivityBase {
 
-    private static final long SPLASH_TIME = 3000;
+    private static final long SPLASH_TIME = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

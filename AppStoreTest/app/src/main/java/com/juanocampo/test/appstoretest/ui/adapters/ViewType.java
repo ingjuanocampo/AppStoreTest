@@ -5,4 +5,6 @@ package com.juanocampo.test.appstoretest.ui.adapters;
  */
 
 public interface ViewType {
+    int getViewType();
+
 }
