@@ -1,6 +1,6 @@
 # AppStoreTest
 
-This is project developed as test. It includes: 
+This project is developed as test. It includes: 
 
 1. Splash (Simple Timer)
 
