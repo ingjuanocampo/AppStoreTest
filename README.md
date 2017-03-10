@@ -2,6 +2,8 @@
 
 This project is developed as test. It includes: 
 
+To see the application in action check this video: https://www.youtube.com/watch?v=IlRZJPrL-Ik&feature=youtu.be
+
 1. Splash (Simple Timer)
 
 2. Downloader apps from https://itunes.apple.com/us/rss/topfreeapplications/limit=20/json 
@@ -22,4 +24,8 @@ Dependencies I used in this project:
     compile 'com.squareup.picasso:picasso:2.5.2'
     testCompile 'junit:junit:4.12'
     compile 'io.reactivex:rxjava:1.2.5'
+    
+    
+    
+    
     
