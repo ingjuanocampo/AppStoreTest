@@ -13,7 +13,7 @@ import com.juanocampo.test.appstoretest.R;
 
 public class SplashActivity extends ActivityBase {
 
-    private static final long SPLASH_TIME = 10000;
+    private static final long SPLASH_TIME = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
